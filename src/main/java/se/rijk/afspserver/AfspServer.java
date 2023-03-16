@@ -20,10 +20,11 @@ public class AfspServer {
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
         LOGGER.info("Using Port: " + conf.getPort());
-        LOGGER.info("Using Webroot: " + conf.getWebroot());
+        LOGGER.info("Using Folder: " + conf.getFolder());
 
         try{
-            ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(),conf.getWebroot());
+            System.out.println("Starting ListenerThread");
+            ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(),conf.getFolder());
             serverListenerThread.start();
         }catch (Exception e){
             e.printStackTrace();
