@@ -1,4 +1,4 @@
 {
   "port": 8080,
-  "webroot": ""
+  "folder": "/home/jeroen/Documents/school/jaar3/blok3/server/fileFolder"
 }

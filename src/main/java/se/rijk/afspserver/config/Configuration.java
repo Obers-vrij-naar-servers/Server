@@ -2,7 +2,7 @@ package se.rijk.afspserver.config;
 
 public class Configuration{
     private int port;
-    private String webroot;
+    private String folder;
 
     public int getPort() {
         return port;
@@ -12,11 +12,11 @@ public class Configuration{
         this.port = port;
     }
 
-    public String getWebroot() {
-        return webroot;
+    public String getFolder() {
+        return folder;
     }
 
-    public void setWebroot(String webroot) {
-        this.webroot = webroot;
+    public void setFolder(String folder) {
+        this.folder = folder;
     }
 }

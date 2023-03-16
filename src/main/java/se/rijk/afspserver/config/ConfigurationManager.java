@@ -2,7 +2,7 @@ package se.rijk.afspserver.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import se.rijk.afspserver.util.Json;
+import se.rijk.common.util.Json;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
