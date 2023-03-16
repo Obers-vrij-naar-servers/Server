@@ -30,12 +30,20 @@ public class AfspClient {
             Socket socket = new Socket(host,port);
             OutputStream out = socket.getOutputStream();
             InputStream in = socket.getInputStream();
+            StringBuilder responseBuffer = new StringBuilder();
 
             String rawDataString = "LIST / AFSP/1.0\r\n" +
                     "Content-length: 8192\r\n"+
-                    "Content-length: 8192\r\n"+
-                    "Content-length: 8192\r\n\r\n";
+                    "Content-length: 100\r\n"+
+                    "Content-length: 500\r\n\r\n";
             out.write(rawDataString.getBytes());
+            int _byte;
+            while ((_byte = in.read()) >= 0) {
+                responseBuffer.append((char)_byte);
+            }
+            System.out.println(responseBuffer.toString());
+            in.close();
+            out.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
