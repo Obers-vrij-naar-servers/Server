@@ -2,6 +2,8 @@ package se.rijk.afsp;
 
 public enum AfspStatusCode {
 
+    SERVER_SUCCESS_200_OK(200,"OK"),
+    SERVER_SUCCESS_304_NOT_MODIFIED(304,"Not Modified"),
 
     CLIENT_ERROR_400_BAD_REQUEST(400,"Bad Request"),
     CLIENT_ERROR_404_NOT_FOUND(404,"Not found"),

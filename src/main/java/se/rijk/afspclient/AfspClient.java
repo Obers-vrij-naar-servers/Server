@@ -33,7 +33,7 @@ public class AfspClient {
             StringBuilder responseBuffer = new StringBuilder();
 
             String rawDataString = "LIST / AFSP/1.0\r\n" +
-                    "Content-length: 8192\r\n"+
+                    "Content-lengh: 8192\r\n"+
                     "Content-length: 100\r\n"+
                     "Content-length: 500\r\n\r\n";
             out.write(rawDataString.getBytes());
