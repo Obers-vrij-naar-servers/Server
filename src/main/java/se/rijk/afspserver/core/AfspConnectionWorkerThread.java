@@ -45,7 +45,7 @@ public class AfspConnectionWorkerThread extends Thread {
             AfspRequestParser parser = new AfspRequestParser();
             AfspRequest request = parser.parseAfspRequest(inputStream);
             List<AfspHeader> headerList = request.getHeaderList();
-            if (!headerList.isEmpty()) {
+            if (headerList != null && !headerList.isEmpty()) {
                 for (AfspHeader _header : headerList) {
                     LOGGER.info("**" + Json.stringify(Json.toJson(_header)) + "**");
                 }
