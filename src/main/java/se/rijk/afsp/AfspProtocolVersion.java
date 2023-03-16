@@ -1,6 +1,6 @@
 package se.rijk.afsp;
 
-public enum AfspProtocolVersions {
+public enum AfspProtocolVersion {
     AFSP_1_0{
         @Override
         public String toString() {

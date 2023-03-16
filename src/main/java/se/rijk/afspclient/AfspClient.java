@@ -3,6 +3,8 @@ package se.rijk.afspclient;
 import ch.qos.logback.core.net.server.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import se.rijk.afsp.AfspResponse;
+import se.rijk.afsp.AfspResponseParser;
 import se.rijk.afspserver.AfspServer;
 import se.rijk.afspserver.config.ConfigurationManager;
 
@@ -31,17 +33,14 @@ public class AfspClient {
             OutputStream out = socket.getOutputStream();
             InputStream in = socket.getInputStream();
             StringBuilder responseBuffer = new StringBuilder();
+            AfspResponseParser parser = new AfspResponseParser();
 
             String rawDataString = "LIST / AFSP/1.0\r\n" +
                     "Content-length: 8192\r\n"+
                     "Content-length: 100\r\n"+
                     "Content-length: 500\r\n\r\n";
             out.write(rawDataString.getBytes());
-            int _byte;
-            while ((_byte = in.read()) >= 0) {
-                responseBuffer.append((char)_byte);
-            }
-            System.out.println(responseBuffer.toString());
+            AfspResponse response = parser.parseResponse(in);
             in.close();
             out.close();
 

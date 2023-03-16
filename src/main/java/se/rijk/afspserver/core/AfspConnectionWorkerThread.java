@@ -2,9 +2,7 @@ package se.rijk.afspserver.core;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import se.rijk.afsp.AfspHeader;
-import se.rijk.afsp.AfspRequestParser;
-import se.rijk.afsp.AfspRequest;
+import se.rijk.afsp.*;
 import se.rijk.common.util.AfspFileHandler;
 import se.rijk.common.util.Json;
 
@@ -43,13 +41,20 @@ public class AfspConnectionWorkerThread extends Thread {
 
             //TODO read
             AfspRequestParser parser = new AfspRequestParser();
-            AfspRequest request = parser.parseAfspRequest(inputStream);
-            List<AfspHeader> headerList = request.getHeaderList();
-            if (headerList != null && !headerList.isEmpty()) {
-                for (AfspHeader _header : headerList) {
-                    LOGGER.info("**" + Json.stringify(Json.toJson(_header)) + "**");
-                }
+            AfspResponse response = null;
+            try{
+                AfspRequest request = parser.parseAfspRequest(inputStream);
+            } catch (AfspParsingException e){
+                response = new AfspResponse(e.getErrorCode());
             }
+
+            if (response == null){
+                response = new AfspResponse(AfspStatusCode.SERVER_SUCCESS_200_OK);
+            }
+            outputStream.write(response.toString().getBytes());
+
+
+
 
 
             //TODO writing
