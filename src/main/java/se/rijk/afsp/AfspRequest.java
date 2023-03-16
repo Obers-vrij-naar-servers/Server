@@ -52,15 +52,5 @@ public class AfspRequest extends AfspMessage {
         this.requestTarget = requestTarget;
     }
 
-    public void addHeader(AfspHeader header){
-        headerList.add(header);
-    }
 
-    public List<AfspHeader> getHeaderList() {
-        return headerList;
-    }
-
-    public void setHeaderList(List<AfspHeader> headerList) {
-        this.headerList = headerList;
-    }
 }
